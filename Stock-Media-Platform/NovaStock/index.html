@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--  
+        primary meta tags
+     -->
+    <title>Novastock - A large stock library</title>
+    <meta name="title" content="Novastock - A large stock library" />
+    <meta
+      name="description"
+      content="This is a stock photos app made by Muhammad Ahmad"
+    />
+    <!-- 
+        favicon
+     -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+    <!-- 
+        - theme js link
+     -->
+    <script src="./js/theme.js"></script>
+    <!--
+        - google fonts links
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 
+        -material icon link
+    -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0"
+    />
+    <!-- 
+        custom css link
+     -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- 
+        custom js links
+      -->
+    <script src="./js/global.js" type="module"></script>
+    <script src="./js/app.js" type="module"></script>
+    <script src="./js/search.js" type="module"></script>
+  </head>
+
+  <body>
+    <!-- 
+          material-symbols-outlined is a link to a Google Fonts stylesheet. It imports the "Material Symbols Outlined (like icons)" font family with specific parameters:
+    -->
+
+    <!-- 
+                                               data Attribute in HTML
+                                                data-* attribute
+
+           The data-* attribute is used to store custom data private to the page or application. The data-* attribute gives us the ability to embed custom data attributes on all HTML elements.
+                       
+          Custom Data Storage:
+          Data attributes allow you to store extra information on standard, semantic HTML elements without resorting to non-standard attributes or adding extra properties to the DOM.
+          For example, if you have an article and want to store metadata like the number of columns, an index number, or a parent category, you can use data attributes:e.g
+          <article data-columns="2" data-index="1" data-parent-category="food">
+
+          JavaScript Access:
+          Reading the values of data attributes in JavaScript is straightforward.
+          You can use the dataset property to access data attributes:
+          const article = document.querySelector("#electric-cars");
+          article.dataset.columns;      // "3"
+          article.dataset.indexNumber;  // "12314"
+          article.dataset.parent;       // "cars"
+
+          CSS Styling:
+          Data attributes are plain HTML attributes, so you can access them from CSS.
+          For instance, you can style elements based on their data attributes:
+          article[data-columns="3"] {
+            width: 400px;
+          }
+          article[data-columns="4"] {
+            width: 600px;
+          }
+    -->
+
+    <!--  
+    - #HEADER
+   -->
+    <header class="top-app-bar" data-header>
+      <!-- 
+      aria-label: Provides an accessible label for screen readers.
+      data-nav-toggler: Toggles visibility of navigation items.
+      data-ripple: Displays a ripple effect when clicked.
+      -->
+      <!--  Menu Button -->
+      <button
+        class="icon-btn"
+        aria-label=" Open menu"
+        data-nav-toggler
+        data-ripple
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        <div class="ripple"></div>
+        <div class="state-layer"></div>
+      </button>
+
+      <a href="/" class="logo" style="color: rgb(109, 201, 196)">Novastock</a>
+
+      <div class="search-view" data-search-view>
+        <div class="search-bar">
+          <!--      Arrow Back         -->
+          <button
+            class="icon-btn search-open"
+            aria-label="Close search"
+            data-search-toggler
+            data-ripple
+          >
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >arrow_back</span
+            >
+            <div class="state-layer"></div>
+          </button>
+          <!--   Search icon        -->
+          <div class="input-wrapper">
+            <span
+              class="material-symbols-outlined leading-icon"
+              aria-hidden="true"
+              >search</span
+            >
+            <!-- 
+                input field
+               -->
+            <input
+              type="search"
+              name="search"
+              placeholder="Search..."
+              class="input-field body-large"
+              autocomplete="off"
+              data-search-field
+            />
+          </div>
+          <!--  Clear search button   -->
+          <button
+            class="icon-btn"
+            aria-label="Clear search"
+            data-search-clear-btn
+            data-ripple
+          >
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >close</span
+            >
+            <div class="state-layer"></div>
+          </button>
+          <!--  Submit search button -->
+          <button
+            class="icon-btn search-btn"
+            aria-label="Submit search"
+            data-search-toggler
+            data-ripple
+            data-search-btn
+          >
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >search</span
+            >
+            <div class="state-layer"></div>
+          </button>
+        </div>
+
+        <div class="search-view-content">
+          <div class="btn-group" data-segment="search">
+            <!-- Photos button -->
+            <button
+              class="btn-segment selected"
+              data-ripple
+              data-segment-btn
+              data-segment-value="photos"
+            >
+              <!-- Icon representing photos -->
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >image</span
+              >
+              <!-- Label for photos -->
+              <span class="label-large text">Photos</span>
+              <!-- Ripple effect layer -->
+              <div class="state-layer"></div>
+            </button>
+
+            <!-- Videos button -->
+            <button
+              class="btn-segment"
+              data-ripple
+              data-segment-btn
+              data-segment-value="videos"
+            >
+              <!-- Icon representing videos -->
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >videocam</span
+              >
+              <!-- Label for videos -->
+              <span class="label-large text">Videos</span>
+              <!-- Ripple effect layer -->
+              <div class="state-layer"></div>
+            </button>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Container for search options -->
+          <div class="list" data-search-list>
+            <!-- list of search hitory items  -->
+          </div>
+        </div>
+      </div>
+      <!-- Button to open the search -->
+      <button
+        class="icon-btn search open"
+        arial-label="Open search"
+        data-search-toggler
+        data-ripple
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        <div class="state-layer"></div>
+      </button>
+      <!-- Button to switch theme -->
+      <button
+        class="icon-btn theme-btn"
+        aria-label="Switch theme"
+        data-theme-toggler
+        data-ripple
+      >
+        <span class="material-symbols-outlined dark-icon" aria-hidden="true"
+          >dark_mode</span
+        >
+        <span class="material-symbols-outlined light-icon" aria-hidden="true"
+          >light_mode</span
+        >
+        <div class="state-layer"></div>
+      </button>
+    </header>
+    <!-- 
+      - #NAVIGATION
+     -->
+    <nav class="navigation" data-navigation>
+      <div class="navigation-header">
+        <button
+          class="icon-btn"
+          aria-label="Close menu"
+          data-ripple
+          data-nav-toggler
+        >
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >arrow_back
+          </span>
+          <div class="state-layer"></div>
+        </button>
+
+        <a href="/" class="logo" style="color: rgb(109, 201, 196)">Novastock</a>
+      </div>
+
+      <ul class="drawer-list">
+        <!-- Link to Home page -->
+        <li class="drawer-list-item">
+          <a href="/" class="drawer-link active" data-drawer-link>
+            <span
+              class="material-symbols-outlined leading-icon"
+              aria-hidden="true"
+              >home</span
+            >
+            <span class="label-large">Home</span>
+            <div class="state-layer"></div>
+          </a>
+        </li>
+
+        <!-- link to images -->
+        <li class="drawer-list-item">
+          <a
+            href="./pages/photos/photos.html"
+            class="drawer-link"
+            data-drawer-link
+          >
+            <span
+              class="material-symbols-outlined leading-icon"
+              aria-hidden="true"
+              >image</span
+            >
+            <span class="label-large">Photos</span>
+            <div class="state-layer"></div>
+          </a>
+        </li>
+
+        <!-- link to videos -->
+        <li class="drawer-list-item">
+          <a
+            href="./pages/videos/videos.html"
+            class="drawer-link"
+            data-drawer-link
+          >
+            <span
+              class="material-symbols-outlined leading-icon"
+              aria-hidden="true"
+              >videocam</span
+            >
+            <span class="label-large">Videos</span>
+            <div class="state-layer"></div>
+          </a>
+        </li>
+
+        <!-- Link to Collections page -->
+        <li class="drawer-list-item">
+          <!-- Link to Collections page -->
+          <a
+            href="./pages/collections/collection.html"
+            class="drawer-link"
+            data-drawer-link
+          >
+            <!-- Icon for Collections -->
+            <span
+              class="material-symbols-outlined leading-icon"
+              aria-hidden="true"
+              >auto_awesome_mosaic</span
+            >
+            <!-- Label for Collections -->
+            <span class="label-large">Collections</span>
+            <!-- State layer for Collections -->
+            <div class="state-layer"></div>
+          </a>
+        </li>
+
+        <!-- Link to Favorite page -->
+        <li class="drawer-list-item">
+          <!-- Link to Favorite page -->
+          <a
+            href="./pages/favorite/favorite.html"
+            class="drawer-link"
+            data-drawer-link
+          >
+            <!-- Icon for Favorite -->
+            <span
+              class="material-symbols-outlined leading-icon"
+              aria-hidden="true"
+              >favorite</span
+            >
+            <!-- Label for Favorite -->
+            <span class="label-large">Favorite</span>
+            <!-- State layer for Favorite -->
+            <div class="state-layer"></div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- 
+       - #Scrim
+     -->
+    <!-- data-nav-toggler for hiding the nav items when click on the scrim body-->
+    <div class="scrim" data-scrim data-nav-toggler></div>
+    <!-- 
+      - Main Section
+    -->
+    <main class="main" style="margin-top: 7rem">
+      <article>
+        <!--         #Bannaer       -->
+        <section class="banner" aria-label="Banner">
+          
+          <div class="banner-card primary">
+            <!-- contains the introductory content about the banner card -->
+            <div class="card-content">
+              <h3 class="headline-medium" card-title>
+                High quality stock photos for free!
+              </h3>
+
+              <p class="boday-large card-text">
+                Explore our exceptional collection of high-quality stock photos.
+              </p>
+
+              <a
+                href="./pages/photos/photos.html"
+                class="btn btn-primary"
+                data-ripple
+              >
+                <span class="label-large text">Explore Now</span>
+                <div class="state-layer"></div>
+              </a>
+            </div>
+            <!-- conatins the images  -->
+            <div class="card-grid">
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b1;
+                  background-image: url(./assets/images/photo-banner-1.jpg);
+                "
+              ></div>
+
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b2;
+                  background-image: url(./assets/images/photo-banner-2.jpg);
+                "
+              ></div>
+
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b3;
+                  background-image: url(./assets/images/photo-banner-3.jpg);
+                "
+              ></div>
+
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b4;
+                  background-image: url(./assets/images/photo-banner-4.jpg);
+                "
+              ></div>
+
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b5;
+                  background-image: url(./assets/images/photo-banner-5.jpg);
+                "
+              ></div>
+
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b6;
+                  background-image: url(./assets/images/photo-banner-6.jpg);
+                "
+              ></div>
+            </div>
+          </div>
+
+          <div class="banner-card secondary">
+            <!-- contains the card information -->
+            <div class="card-content">
+              <h3 class="headline-medium" card-title>
+                Top rated stock Videos for free!
+              </h3>
+              <p class="body-large card-text">
+                Our curated selection of videos is sure to inspire and
+                captivate.
+              </p>
+              <a
+                href="./pages/videos/videos.html"
+                class="btn btn-secondary"
+                data-ripple
+              >
+                <span class="label-large text">Explore Now</span>
+                <div class="state-layer"></div>
+              </a>
+            </div>
+            <!-- 
+              conatins the vdeos 
+              -->
+            <div class="card-grid">
+              <div class="card-banner" style="grid-area: b1">
+                <video
+                  class="video"
+                  width="360"
+                  height="420"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/video-banner-1.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+
+              <div class="card-banner" style="grid-area: b2">
+                <video
+                  class="video"
+                  width="360"
+                  height="640"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/video-banner-2.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+
+              <div class="card-banner" style="grid-area: b3">
+                <video
+                  class="video"
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/video-banner-3.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+
+              <div class="card-banner" style="grid-area: b4">
+                <video
+                  class="video"
+                  width="640"
+                  height="360"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/video-banner-4.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+
+              <div class="card-banner" style="grid-area: b5">
+                <video
+                  class="video"
+                  width="640"
+                  height="360"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/video-banner-5.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+
+              <div class="card-banner" style="grid-area: b6">
+                <video
+                  class="video"
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/video-banner-6.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="banner-card tertiary">
+            <!-- contains the card information -->
+            <div class="card-content">
+              <h3 class="headline-medium" card-title>
+                Best collections with best medias!
+              </h3>
+              <p class="body-large card-text">
+                Discover a treasure trove of stunning images, captivating
+                videos.
+              </p>
+              <a
+                href="./pages/collections/collection.html"
+                class="btn btn-tertiary"
+                data-ripple
+              >
+                <span class="label-large text">Explore Now</span>
+                <div class="state-layer"></div>
+              </a>
+            </div>
+            <!-- 
+              conatins the videos 
+              -->
+
+            <div class="card-grid">
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b1;
+                  background-image: url(./assets/images/collection-banner-1.jpg);
+                "
+              ></div>
+
+              <div class="card-banner" style="grid-area: b2">
+                <video
+                  class="video"
+                  width="360"
+                  height="420"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/collection-banner-2.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b3;
+                  background-image: url(./assets/images/collection-banner-3.jpg);
+                "
+              ></div>
+
+              <div
+                class="card-banner"
+                style="
+                  grid-area: b4;
+                  background-image: url(./assets/images/collection-banner-4.jpg);
+                "
+              ></div>
+
+              <div class="card-banner" style="grid-area: b5">
+                <video
+                  class="video"
+                  width="640"
+                  height="360"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/collection-banner-5.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+
+              <div class="card-banner" style="grid-area: b6">
+                <video
+                  class="video"
+                  width="640"
+                  height="338"
+                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                >
+                  <source
+                    src="./assets/videos/collection-banner-6.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+      </article>
+    </main>
+  </body>
+</html>
